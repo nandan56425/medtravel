@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -67,6 +67,10 @@ export function Navbar() {
               <Phone className="h-4 w-4" />
               <span>+91-821-4299999</span>
             </Link>
+            <Link href="/login" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+              <User className="h-4 w-4" />
+              <span>Login</span>
+            </Link>
             <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
               <Link href="/enquiry">Book Consultation</Link>
             </Button>
@@ -96,6 +100,14 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href="/login"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors flex items-center gap-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <User className="h-4 w-4" />
+                Login / Sign Up
+              </Link>
               <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground w-full mt-2">
                 <Link href="/enquiry">Book Consultation</Link>
               </Button>

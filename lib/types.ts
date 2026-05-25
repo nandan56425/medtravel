@@ -9,6 +9,7 @@ export interface Hospital {
   languages: string[]
   location: string
   contact: string
+  accreditation?: string
 }
 
 // Doctor type
@@ -22,6 +23,21 @@ export interface Doctor {
   languages: string[]
   availableForVideo: boolean
   bio: string
+  recommendedPercent?: number
+}
+
+// User type
+export interface User {
+  _id?: string
+  fullName: string
+  email: string
+  password?: string
+  phone?: string
+  countryOfOrigin?: string
+  isInternationalPatient: boolean
+  role: 'patient' | 'admin'
+  createdAt?: string
+  lastLogin?: string
 }
 
 // Treatment type
