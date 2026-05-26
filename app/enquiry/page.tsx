@@ -100,7 +100,7 @@ export default function EnquiryPage() {
   if (isSubmitted) {
     return (
       <ProtectedRoute>
-       <main className="min-h-screen flex items-center justify-center py-32 bg-gradient-to-br from-primary/10 via-secondary to-background">
+        <main className="min-h-screen flex items-center justify-center py-32 bg-gradient-to-br from-primary/10 via-secondary to-background">
          <motion.div 
           className="max-w-lg mx-auto text-center px-4"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -464,7 +464,7 @@ export default function EnquiryPage() {
           </div>
         </div>
       </section>
-     </main>
-   </ProtectedRoute>
+      </main>
+    </ProtectedRoute>
   )
 }
