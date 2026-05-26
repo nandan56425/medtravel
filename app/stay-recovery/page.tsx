@@ -1,6 +1,7 @@
 'use client'
 
 import ProtectedRoute from '@/components/ProtectedRoute'
+import { Navbar } from '@/components/navbar'
 import { motion } from 'framer-motion'
 import {
   Hotel,
@@ -47,8 +48,10 @@ const hotels = [
 export default function StayRecoveryPage() {
   return (
     <ProtectedRoute>
-      <main className="min-h-screen">
+      <>
+        <Navbar />
 
+        <main className="min-h-screen">
         {/* Hero Section */}
         <section className="relative py-32 bg-gradient-to-br from-primary/10 via-secondary to-background overflow-hidden">
           <div className="container mx-auto px-4 text-center">
