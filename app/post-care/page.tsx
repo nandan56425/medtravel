@@ -374,30 +374,65 @@ export default function PostCarePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Questions About Post-Care?
-            </h2>
-            <p className="text-primary-foreground/80 mb-8">
-              Our patient support team is available 24/7 to assist with any concerns about your recovery.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                <a href="https://wa.me/918214299999" target="_blank" rel="noopener noreferrer">
-                  Chat on WhatsApp <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                <a href="mailto:care@medtravelhub.com">
-                  Email Support
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* CTA Section */}
+<section className="py-16 bg-primary text-primary-foreground">
+  <div className="container mx-auto px-4">
+    <div className="max-w-3xl mx-auto text-center">
+
+      <h2 className="text-2xl md:text-3xl font-bold mb-4">
+        Questions About Post-Care?
+      </h2>
+
+      <p className="text-primary-foreground/80 mb-8">
+        Our patient support team is available 24/7 to assist with any concerns about your recovery.
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+        {/* WhatsApp Button */}
+        <Button
+          asChild
+          size="lg"
+          className="bg-accent hover:bg-accent/90 text-accent-foreground"
+        >
+          <a
+            href="https://wa.me/918214299999"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chat on WhatsApp
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
+        </Button>
+
+        {/* Email Support */}
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+        >
+          <a href="mailto:care@medtravelhub.com">
+            Email Support
+          </a>
+        </Button>
+
+        {/* NEW Stay & Recovery Button */}
+        <Button
+          asChild
+          size="lg"
+          variant="secondary"
+        >
+          <a href="/stay-recovery">
+            Stay & Recovery
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
+        </Button>
+
+      </div>
+    </div>
+  </div>
+</section>
     </main>
     </ProtectedRoute>
   )
