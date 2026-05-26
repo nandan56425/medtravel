@@ -1,5 +1,6 @@
 'use client'
 
+import ProtectedRoute from '@/components/ProtectedRoute'
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
@@ -98,6 +99,7 @@ export default function EnquiryPage() {
 
   if (isSubmitted) {
     return (
+      <ProtectedRoute>
       <main className="min-h-screen flex items-center justify-center py-32 bg-gradient-to-br from-primary/10 via-secondary to-background">
         <motion.div 
           className="max-w-lg mx-auto text-center px-4"
@@ -463,5 +465,6 @@ export default function EnquiryPage() {
         </div>
       </section>
     </main>
+      </ProtectedRoute>
   )
 }
