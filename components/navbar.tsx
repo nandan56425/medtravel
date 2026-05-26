@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image";
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, Phone, User } from 'lucide-react'
@@ -39,9 +40,14 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="MedTravel Hub Logo"
+              width={180}
+              height={60}
+              priority
+              className="object-contain"
+           />
             <div className="flex flex-col">
               <span className="font-bold text-lg text-foreground">MedTravel Hub</span>
               <span className="text-xs text-muted-foreground hidden sm:block">Where Healing Meets Heritage</span>
