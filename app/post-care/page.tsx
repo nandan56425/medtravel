@@ -1,5 +1,6 @@
 'use client'
 
+import ProtectedRoute from '@/components/ProtectedRoute'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
@@ -109,6 +110,7 @@ export default function PostCarePage() {
   }
 
   return (
+    <ProtectedRoute>
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-primary/10 via-secondary to-background overflow-hidden">
@@ -397,5 +399,6 @@ export default function PostCarePage() {
         </div>
       </section>
     </main>
+    </ProtectedRoute>
   )
 }
