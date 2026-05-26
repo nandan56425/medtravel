@@ -59,7 +59,12 @@ export default function StayRecoveryPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-              {hotels.map((hotel, index) => (
+              {isLoading ? (
+  <p className="text-center col-span-full">
+    Loading hotels...
+  </p>
+) : hotels && hotels.length > 0 ? (
+  hotels.map((hotel, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
