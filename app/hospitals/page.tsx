@@ -33,6 +33,7 @@ export default function HospitalsPage() {
   })
 
   return (
+    <ProtectedRoute>
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-primary/10 via-secondary to-background overflow-hidden">
@@ -191,5 +192,6 @@ export default function HospitalsPage() {
         </div>
       </section>
     </main>
+    </ProtectedRoute>
   )
 }
