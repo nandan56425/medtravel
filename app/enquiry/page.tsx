@@ -176,12 +176,22 @@ export default function EnquiryPage() {
               Your enquiry has been submitted successfully.
             </p>
 
-            <Button
-              onClick={() => setIsSubmitted(false)}
-              variant="outline"
-            >
-              Submit Another Enquiry
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+  <Button
+    onClick={() => setIsSubmitted(false)}
+    variant="outline"
+  >
+    Submit Another Enquiry
+  </Button>
+
+  <Button asChild>
+    <a href="/my-enquiries">
+      My Enquiries
+    </a>
+  </Button>
+
+</div>
           </motion.div>
         </main>
       </ProtectedRoute>
