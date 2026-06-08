@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import connectDB from '@/lib/mongodb'
+import { connectDB } from '@/lib/mongodb'
 import User from '@/models/User'
 
 // In-memory user store (shared with register route in production, use database)
