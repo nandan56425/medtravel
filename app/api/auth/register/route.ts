@@ -1,3 +1,5 @@
+import connectDB from '@/lib/mongodb'
+import User from '@/models/User'
 import { NextResponse } from 'next/server'
 
 // In-memory user store (replace with database in production)
@@ -36,35 +38,65 @@ function generateToken(userId: string, email: string): string {
   return Buffer.from(JSON.stringify(payload)).toString('base64')
 }
 
-export async function POST(request: Request) {
+export async function POST(
+  req: Request
+) {
   try {
-    const body = await request.json()
-    const { fullName, email, password, phone, countryOfOrigin, isInternationalPatient } = body
 
-    // Validate required fields
-    if (!fullName || !email || !password) {
-      return NextResponse.json(
-        { error: 'Full name, email, and password are required' },
+    await connectDB()
+
+    const body = await req.json()
+
+    const existingUser =
+      await User.findOne({
+        email: body.email,
+      })
+
+    if (existingUser) {
+
+      return Response.json(
+        {
+          error:
+            'User already exists',
+        },
+
         { status: 400 }
       )
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      )
-    }
+    const user = await User.create({
+      fullName: body.fullName,
 
-    // Validate password length
-    if (password.length < 8) {
-      return NextResponse.json(
-        { error: 'Password must be at least 8 characters' },
-        { status: 400 }
-      )
-    }
+      email: body.email,
+
+      password: body.password,
+
+      phone: body.phone,
+
+      countryOfOrigin:
+        body.countryOfOrigin,
+    })
+
+    return Response.json({
+      success: true,
+      token: 'demo-token',
+      user,
+    })
+
+  } catch (error) {
+
+    console.error(error)
+
+    return Response.json(
+      {
+        error:
+          'Registration failed',
+      },
+
+      { status: 500 }
+    )
+  }
+}
 
     // Check if user already exists
     const existingUser = users.find(u => u.email.toLowerCase() === email.toLowerCase())
