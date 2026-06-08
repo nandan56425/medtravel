@@ -173,6 +173,16 @@ export default function StayRecoveryPage() {
           {selectedHotel.contact}
         </p>
 
+        <p>
+          <strong>Email:</strong>{" "}
+          {selectedHotel.email}
+        </p>
+
+        <p>
+          <strong>Address:</strong>{" "}
+          {selectedHotel.address}
+        </p>
+
         <div className="flex gap-2">
 
           <Button
