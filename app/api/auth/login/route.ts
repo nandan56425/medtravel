@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import connectDB from '@/lib/mongodb'
+import User from '@/models/User'
 
 // In-memory user store (shared with register route in production, use database)
 const users: Array<{
@@ -52,18 +54,67 @@ function generateToken(userId: string, email: string): string {
   return Buffer.from(JSON.stringify(payload)).toString('base64')
 }
 
-export async function POST(request: Request) {
+export async function POST(
+  req: Request
+) {
   try {
-    const body = await request.json()
-    const { email, password } = body
 
-    // Validate required fields
-    if (!email || !password) {
-      return NextResponse.json(
-        { error: 'Email and password are required' },
-        { status: 400 }
+    await connectDB()
+
+    const body = await req.json()
+
+    const user =
+      await User.findOne({
+        email: body.email,
+      })
+
+    if (!user) {
+
+      return Response.json(
+        {
+          error:
+            'User not found',
+        },
+
+        { status: 404 }
       )
     }
+
+    if (
+      user.password !==
+      body.password
+    ) {
+
+      return Response.json(
+        {
+          error:
+            'Invalid password',
+        },
+
+        { status: 401 }
+      )
+    }
+
+    return Response.json({
+      success: true,
+      token: 'demo-token',
+      user,
+    })
+
+  } catch (error) {
+
+    console.error(error)
+
+    return Response.json(
+      {
+        error:
+          'Login failed',
+      },
+
+      { status: 500 }
+    )
+  }
+}
 
     // Find user by email
     const user = users.find(u => u.email.toLowerCase() === email.toLowerCase())
